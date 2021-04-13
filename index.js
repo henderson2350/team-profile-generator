@@ -14,7 +14,7 @@ var team = []
 
 //The dist folder is where the output will land
 const OUTPUT_DIR = path.resolve(__dirname, "dist")
-const outputPath = path.join(OUTPUT_DIR, "teamz.html");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 // Inquirer prompt and write file promise
 function makeManager() {
@@ -114,7 +114,6 @@ function whatNext() {
       if (answers.next === "Continue") {
         runApp()
       } else {
-        console.log(generateTeam(team))
         console.log(team)
         buildTeam()
       }
@@ -127,6 +126,7 @@ function buildTeam() {
     }
     // console.log(generateTeam(team)
     console.log(outputPath)
+    // console.log(generateTeam(team))
 
     fs.writeFileSync(outputPath, generateTeam(team), "utf-8"); //in the output path(which is the folder and the file) write 
     

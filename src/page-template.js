@@ -6,8 +6,8 @@ const Intern = require("/Users/clarehenderson/gt/homework/team-profile-generator
 var html = "";
 // var team = []
 // generate the HTML pages
-function generateTeam(team) {
-  team.forEach((employee) => {
+function generateTeam(i) {
+  i.forEach((employee) => {
     if (employee.getRole() === "Manager") {
       html += generateManager(employee);
     }
@@ -24,39 +24,45 @@ function generateTeam(team) {
 // Generate the manager card
 const generateManager = (Manager) => {
   // return template literal with the card
-  return `<div class="card" style="width: 18rem;">
-    <h1>${Manager.name}</h1>
-    <h2>Manager</h2>
+  return `<div class="card" style="width: 18rem;  margin: 10px">
+    <div style="background-color: red; color: white; padding: 20px">
+    <h2>${Manager.name}</h2>
+    <h3>Manager</h3>
+    </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${Manager.id}</li>
-      <li class="list-group-item">${Manager.email}</li>
-      <li class="list-group-item">${Manager.officeNumber}</li>
+      <li class="list-group-item">ID: ${Manager.id}</li>
+      <li class="list-group-item">Email: ${Manager.email}</li>
+      <li class="list-group-item">Office Number: ${Manager.officeNumber}</li>
     </ul>
   </div>`;
 };
 
 const generateIntern = (intern) => {
   // return template literal with the card
-  return `<div class="card" style="width: 18rem;">
-  <h1>${intern.name}</h1>
-  <h2>Intern</h2>
+  return `<div class="card" style="width: 18rem; margin: 10px">
+  <div style="background-color: red; color: white; padding: 20px">
+  <h2>${intern.name}</h2>
+  <h3>Intern</h3>
+  </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${intern.id}</li>
-    <li class="list-group-item">${intern.email}</li>
-    <li class="list-group-item">${intern.school}</li>
+    <li class="list-group-item">ID: ${intern.id}</li>
+    <li class="list-group-item">Email: ${intern.email}</li>
+    <li class="list-group-item">School: ${intern.school}</li>
   </ul>
 </div>`;
 };
 
 const generateEngineer = (engineer) => {
   // return template literal with the card
-  return `<div class="card" style="width: 18rem;">
-  <h1>${engineer.name}</h1>
-  <h2>Engineer</h2>
+  return `<div class="card" style="width: 18rem; margin: 10px">
+  <div style="background-color: red; color: white; padding: 20px">
+  <h2>${engineer.name}</h2>
+  <h3>Engineer</h3>
+  </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${engineer.id}</li>
-    <li class="list-group-item">${engineer.email}</li>
-    <li class="list-group-item">${engineer.github}</li>
+    <li class="list-group-item">ID: ${engineer.id}</li>
+    <li class="list-group-item">Email: ${engineer.email}</li>
+    <li class="list-group-item">Github: ${engineer.github}</li>
   </ul>
 </div>`;
 };
@@ -77,7 +83,7 @@ const generateFinalHTML = (team) => {
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading">
+            <div class="col-12 jumbotron mb-3 team-heading" style="background-color: lightblue">
                 <h1 class="text-center">My Team</h1>
             </div>
         </div>

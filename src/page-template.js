@@ -1,40 +1,68 @@
-// Employee = require(Employee)
-Manager = require(Manager)
-// Engineer = require(Engineer)
-// Intern = require(Intern)
+const Employee = require("/Users/clarehenderson/gt/homework/team-profile-generator/lib/Employee.js");
+const Manager = require("/Users/clarehenderson/gt/homework/team-profile-generator/lib/Manager.js");
+const Engineer = require("/Users/clarehenderson/gt/homework/team-profile-generator/lib/Engineer.js");
+const Intern = require("/Users/clarehenderson/gt/homework/team-profile-generator/lib/Intern.js");
 
+var html = "";
+// var team = []
 // generate the HTML pages
-function generateTeam() {
-    return ("hello")
-    // A method for a template to render manager info
-    // if statement that runs the generate manager function if certain criteria are met
-   // A method for a template to render engineer info
-
-   // A method for a template to render intern info
-}
-const generateManager = manager => {
-    return `${manager.getName()}`
-    // we need to do manager.getName for the first item in the array
-}
-
-const generateIntern = intern => {
-    // return `${intern.getName()}`
-    return ("hello")
+function generateTeam(team) {
+  team.forEach((employee) => {
+    if (employee.getRole() === "Manager") {
+      html += generateManager(employee);
+    }
+    if (employee.getRole() === "Intern") {
+      html += generateIntern(employee);
+    }
+    if (employee.getRole() === "Engineer") {
+      html += generateEngineer(employee);
+    }
+  });
+  return generateFinalHTML(html)
 }
 
-const generateEngineer = engineer => {
-    return `${engineer.getName()}`
-}
-// const html = [] {}
-//    html.push(team
-//        .filter(employee => employee.getRole() === "Manager")
-//        .map(manager => generateManager(manager))
-//    );
-//    return html.join("");
-// }
+// Generate the manager card
+const generateManager = (Manager) => {
+  // return template literal with the card
+  return `<div class="card" style="width: 18rem;">
+    <h1>${Manager.name}</h1>
+    <h2>Manager</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${Manager.id}</li>
+      <li class="list-group-item">${Manager.email}</li>
+      <li class="list-group-item">${Manager.officeNumber}</li>
+    </ul>
+  </div>`;
+};
 
-module.exports = team => {
-    return `
+const generateIntern = (intern) => {
+  // return template literal with the card
+  return `<div class="card" style="width: 18rem;">
+  <h1>${intern.name}</h1>
+  <h2>Intern</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${intern.id}</li>
+    <li class="list-group-item">${intern.email}</li>
+    <li class="list-group-item">${intern.school}</li>
+  </ul>
+</div>`;
+};
+
+const generateEngineer = (engineer) => {
+  // return template literal with the card
+  return `<div class="card" style="width: 18rem;">
+  <h1>${engineer.name}</h1>
+  <h2>Engineer</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${engineer.id}</li>
+    <li class="list-group-item">${engineer.email}</li>
+    <li class="list-group-item">${engineer.github}</li>
+  </ul>
+</div>`;
+};
+
+const generateFinalHTML = (team) => {
+  return `
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,12 +85,14 @@ module.exports = team => {
     <div class="container">
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
-                ${generateIntern()}
+                ${html}
             </div>
         </div>
     </div>
 </body>
 </html>
-    `
-}
+    `;
+};
 
+// console.log(generateTeam(team))
+module.exports = generateTeam;

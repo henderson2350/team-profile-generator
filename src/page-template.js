@@ -1,20 +1,30 @@
-// generate the HTML pages
-const generateTeam = team => {
-    // A method for a template to render manager info
+// Employee = require(Employee)
+Manager = require(Manager)
+// Engineer = require(Engineer)
+// Intern = require(Intern)
 
+// generate the HTML pages
+function generateTeam() {
+    return ("hello")
+    // A method for a template to render manager info
+    // if statement that runs the generate manager function if certain criteria are met
    // A method for a template to render engineer info
 
    // A method for a template to render intern info
 }
-
 const generateManager = manager => {
     return `${manager.getName()}`
+    // we need to do manager.getName for the first item in the array
 }
 
 const generateIntern = intern => {
-    return `${intern.getName()}`
+    // return `${intern.getName()}`
+    return ("hello")
 }
 
+const generateEngineer = engineer => {
+    return `${engineer.getName()}`
+}
 // const html = [] {}
 //    html.push(team
 //        .filter(employee => employee.getRole() === "Manager")
@@ -47,8 +57,7 @@ module.exports = team => {
     <div class="container">
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
-                YOUR METHOD GOES HERE THE CARDS OF MANAGER, INTERN, ENGINEER WILL BE. 
-                
+                ${generateIntern()}
             </div>
         </div>
     </div>
